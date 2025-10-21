@@ -2,7 +2,7 @@
 
 A C# program that simulates the behavior of a old-school mobile phone keypad — supporting multi-tap text input, backspace, and send functionality. Input is provided via command-line arguments and converted into readable text.
 
---
+---
 
 ## 📝 Description
 
@@ -40,52 +40,49 @@ This project includes both the main program and unit tests to validate input han
 
 ---
 
-## 💻 Installation
-
-### Requirments
-- .NET SDK version 6.0 S or later
+## 💻Requirments
+- [.NET SDK 6.0 or later](https://dotnet.microsoft.com/)
 - Make (optional, for using `Makefile` commands)
 
-### Steps
+---
 
-1. Clone the repository:
+## 🚀Getting Started
+
+### 1. Clone the repository:
 ```bash
 $ git clone https://github.com/Shivalux/OldPhonePad.git
 $ cd OldPhonePad
 ```
-2. Compiles a .NET project and its dependecies into binaries:
+### 2. Build the project:
 ```bash
 $ make
 ```
-3. The `OldPhonePad.sh` script will be generate for running the program.
+* This will generate an executable script: `OldPhonePad.sh`
+### 3. Run the app:
+```bash
+./OldPhonePad.sh [INPUTS ...]
+```
+* Use quotes for inputs containing * or spaces (e.g., `"227*#"`, `22 2#`)
+* If no input is provided, the program will run using example inputs.
 
 ## 🧰Makefile Commands
 
 Command | Description|
 --------|------------|
-`make`, `make all` | Build the project and all dependencies |
+`make` / `make all` | Build the project and all dependencies |
 `make test` | Run the unit test |
 `make clean` | Clean the output of a previous build |
 `make fclean` | Remove all bin/ and obj/ directory |
 `make re` | clean and rebuild entire project |
 
-## 🚀 Usage
-
-```bash
-./OldPhonePad.sh [INPUTS ...]
-```
-### Noted
-
-• If no input is provided, the program will run using example inputs.
-
-
 ## 🧪Example
 
 ### Run the App
-#### Command
+
+#### Command 
 
 ```bash
-$ ./OldPhonePad.sh 33# 227*# "4433555 555666#" "8 88777444666*664#"
+$ ./OldPhonePad.sh 33# '227*#' "4433555 555666#" "8 88777444666*664#"
 ```
 #### What happens
 
@@ -103,8 +100,6 @@ OldPhonePad("4433555 555666#") => output: |HELLO|
 OldPhonePad("8 88777444666*664#") => output: |TURING|
 ```
 ### Run Tests
-
-#### Command
 
 ```bash
 $ make test
