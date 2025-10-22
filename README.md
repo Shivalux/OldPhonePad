@@ -4,7 +4,7 @@ A C# program that simulates the behavior of a old-school mobile phone keypad —
 
 ---
 
-## 📝 Description
+## 📝Description
 
 **OldPhonePad** is a C# console application that emulates the functionality of old-school mobile phone keypads. Users interact with the system using input strings consisting of keypad characters (`1-9`, `0`, `*`, `#`), similar to how SMS messages were typed on feature phones.
 
@@ -22,10 +22,10 @@ This project includes both the main program and unit tests to validate input han
   - `7` → `P Q R S`
   - `8` → `T U V`
   - `9` → `W X Y Z`
-  - `0` → space (` `)
-  - `1` → symbols (`& ' (`)
+  - `0` → space '` `'
+  - `1` → symbols `& ' (`
 - Pressing a key multiple times cycles through the characters
-- Use a **space** between inputs if two characters are on the same key (e.g., `44 444` → `HI`)
+- Use a **space** between inputs if two characters are on the same key (e.g., `44 444#` → `HI`)
 - `*` represents **backspace**
 - `#` represents **send** and signals the end of input
 

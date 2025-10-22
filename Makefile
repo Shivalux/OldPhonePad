@@ -6,12 +6,11 @@ TESTS		= ./OldPhonePad.Tests
 ARGS		= $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
 
 $(NAME):
-	dotnet build $(SRCS)
-	dotnet build $(TESTS)
-	echo 
+	@dotnet build $(SRCS)
+	@dotnet build $(TESTS)
 	@echo '#!/bin/bash' > $(NAME)
 	@echo 'dotnet run --project ./OldPhonePad "$$@"' >> $(NAME)
-	chmod +x $(NAME)
+	@chmod +x $(NAME)
 
 %:
 	@:
@@ -25,8 +24,8 @@ test:
 	dotnet test $(TESTS)/$(TEST)
 
 clean:
-	dotnet clean $(SRCS)
-	dotnet clean $(TESTS)
+	@dotnet clean $(SRCS)
+	@dotnet clean $(TESTS)
 	@rm -rf $(NAME)
 
 fclean: clean

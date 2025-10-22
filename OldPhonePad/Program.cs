@@ -5,6 +5,9 @@ namespace OldPhonePad
 {
     public class Program
     {
+       /// <summary>
+       /// 
+       /// </summary>
         private static readonly Dictionary<char, string> PhonePad = new Dictionary<char, string>()
         {
             {'1', "&'("},
@@ -17,7 +20,20 @@ namespace OldPhonePad
             {'8', "TUV"},
             {'9', "WXYZ"},
         };
-
+        
+        /// <summary>
+        /// The OldPhonePad function processes input characters based on a specific phone keypad layout,
+        /// with special handling for '#' to stop processing.
+        /// </summary>
+        /// <param name="input">The `OldPhonePad` method takes a string input and processes it according
+        /// to certain rules. It looks for specific characters in the input string and performs
+        /// different actions based on those characters. The method processes the input string until it
+        /// encounters the '#' character, at which point it stops and returns the result.</param>
+        /// <returns>
+        /// The `OldPhonePad` method returns a string that is the result of processing the input string
+        /// 
+        /// </returns>
+        /// <exception cref="ArgumentException"></exception>
         public static string OldPhonePad(string input)
         {
             string  result = "";
@@ -43,9 +59,9 @@ namespace OldPhonePad
                 else if (keypad == '*')
                     result = result[..(result.Length - (count + 1) < 0 ? 0 : result.Length - (count + 1))];
                 else if (keypad == '0')
-                    result = result.PadRight(result.Length + (count + 1));
+                    result = result.PadRight(result.Length + count + 1);
                 else
-                    result += PhonePad[keypad][(count) % (PhonePad[keypad].Length)];
+                    result += PhonePad[keypad][count % PhonePad[keypad].Length];
             }
             return (result);
         }
@@ -66,7 +82,6 @@ namespace OldPhonePad
                     int index = e.Message.IndexOf(" (Parameter '");
                     Console.WriteLine($"OldPhonePad(\"{item}\") => {e.Message[..index]}");
                 }
-                
             }
         }
     }
