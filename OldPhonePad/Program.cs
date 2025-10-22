@@ -23,11 +23,20 @@ namespace OldPhonePad
         };
 
         /// <summary>
-        /// 
+        /// Processes an input string simulating an old mobile phone keypad, 
+        /// where each number corresponds to a set of characters.
+        /// convert keypad input to human readable text.
+        /// The function stops processing when encountering the '#' character in the input.
         /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <param name="input">
+        /// It must contain the '#' character to indicate the end of the input.
+        /// The input can contain digits (0-9), spaces for multiple characters with same keypad,
+        /// the '*' character for deleting previous characters, and the '0' character to add spaces.</param>
+        /// <returns>
+        /// A string representing the processed readable output of the key presses based on old phone keypad.
+        /// </returns>
+        /// <exception cref="ArgumentException">Thrown if the input string does not contain a '#' character or 
+        /// contains invalid characters not allowed by the keypad (digits 0-9, '*', '#', and space).</exception>
         public static string OldPhonePad(string input)
         {
             StringBuilder result = new StringBuilder();
@@ -52,21 +61,40 @@ namespace OldPhonePad
                 }
                 if (keypad == ' ') continue;
                 else if (keypad == '*')
-                    insideBracket = RemoveCharacter(result, count, insideBracket);
+                    insideBracket = RemoveCharacter(result, ++count, insideBracket);
                 else if (keypad == '0')
-                    result.Append(' ', count + 1);
+                    result.Append(' ', ++count);
                 else
                     insideBracket = AddCharacter(result, KeypadMapping[keypad][count % KeypadMapping[keypad].Length], insideBracket);
             }
             return result.ToString();
         }
 
+        /// <summary>
+        /// Adds a character to the StringBuilder and toggles the 'insideBracket' state.
+        /// If the character is '(', it appends ')' if 'insideBracket' is true, otherwise it appends '('.
+        /// </summary>
+        /// <param name="str">The StringBuilder that the character will be appended to.</param>
+        /// <param name="character">The character to add.</param>
+        /// <param name="insideBracket">Indicates whether the current string is inside a bracket.</param>
+        /// <returns>
+        /// The updated 'insideBracket' state after the character is added.
+        /// </returns>
         private static bool AddCharacter(StringBuilder str, char character, bool insideBracket)
         {
             str.Append(character == '(' && insideBracket ? ')' : character);
             return character == '(' ? !insideBracket : insideBracket;
         }
 
+        /// <summary>
+        /// Removes a specified number of characters from the StringBuilder while tracking 'insideBracket' state.
+        /// </summary>
+        /// <param name="currentStr">The StringBuilder from which characters will be removed.</param>
+        /// <param name="count">The number of characters to remove.</param>
+        /// <param name="insideBracket">Indicates whether the string is currently inside brackets.</param>
+        /// <returns>
+        /// The updated 'insideBracket' state after the character is removed.
+        /// </returns>
         private static bool RemoveCharacter(StringBuilder currentStr, int count, bool insideBracket)
         {
             string originalStr =  currentStr.ToString();
@@ -74,7 +102,7 @@ namespace OldPhonePad
 
             currentStr.Clear();
             insideBracket = false;
-            while (index < originalStr.Length - (count + 1))
+            while (index < originalStr.Length - count)
             {
                 if (originalStr[index] == '(' || originalStr[index] == ')')
                     insideBracket = !insideBracket;
