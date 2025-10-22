@@ -18,7 +18,7 @@ $(NAME):
 all: $(NAME)
 
 run:
-	@dotnet run --project $(SRCS)/$(NAME) $(ARGS)
+	@dotnet run --project $(SRCS)/$(SRC_PRJ) $(ARGS)
 
 test:
 	dotnet test $(TESTS)/$(TEST)
