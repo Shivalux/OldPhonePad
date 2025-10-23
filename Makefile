@@ -21,7 +21,7 @@ run:
 	@dotnet run --project $(SRCS)/$(SRC_PRJ) $(ARGS)
 
 test:
-	@dotnet test $(TESTS)/$(TEST)
+	dotnet test $(TESTS)/$(TEST)
 
 clean:
 	@dotnet clean $(SRCS)

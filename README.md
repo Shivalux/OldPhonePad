@@ -107,9 +107,9 @@ $ make test
 
 ####  Output
 ```bash
-Restore complete (0.2s)
+Restore complete (0.3s)
   OldPhonePad succeeded (0.1s) → OldPhonePad/bin/Debug/net9.0/OldPhonePad.dll
-  OldPhonePad.Tests succeeded (0.1s) → OldPhonePad.Tests/bin/Debug/net9.0/OldPhonePad.Tests.dll
+  OldPhonePad.Tests succeeded (1.3s) → OldPhonePad.Tests/bin/Debug/net9.0/OldPhonePad.Tests.dll
 [xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.8.2+699d445a1a (64-bit .NET 9.0.10)
 [xUnit.net 00:00:00.03]   Discovering: OldPhonePad.Tests
 [xUnit.net 00:00:00.06]   Discovered:  OldPhonePad.Tests
@@ -117,7 +117,7 @@ Restore complete (0.2s)
 [xUnit.net 00:00:00.10]   Finished:    OldPhonePad.Tests
   OldPhonePad.Tests test succeeded (0.5s)
 
-Test summary: total: 37, failed: 0, succeeded: 37, skipped: 0, duration: 0.5s
+Test summary: total: 10, failed: 0, succeeded: 10, skipped: 0, duration: 0.5s
 ```
 
 ## 👥 Authors & Acknowledments
